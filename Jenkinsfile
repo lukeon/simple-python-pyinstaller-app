@@ -35,11 +35,7 @@ pipeline {
         }
       }
       steps {
-        sh '''
-          echo "Multiline shell steps works too"
-          ls -lah
-          "pyinstaller --onefile sources/add2vals.py"
-        '''
+        sh -xe ' "pyinstaller --onefile sources/add2vals.py"  '
       }
       post {
         success {
