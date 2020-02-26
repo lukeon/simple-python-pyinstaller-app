@@ -31,13 +31,15 @@ pipeline {
       agent {
         docker {
           image 'cdrx/pyinstaller-linux:python2'
-          args '-v "${pwd -P}":/src --rm '
+          args '--rm '
         }
       }
       steps {
-        sh 'printenv'
-        sh 'ls -l'
-        sh '"pyinstaller --onefile sources/add2vals.py" '
+        sh -xe '''
+             echo "HIHI"
+             ls -laH
+             "pyinstaller --onefile sources/add2vals.py"
+        '''
       }
       post {
         success {
