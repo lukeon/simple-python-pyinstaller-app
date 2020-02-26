@@ -28,7 +28,7 @@ pipeline {
       }
     }
     stage('Deliver') {
-      agent none
+      agent any
       steps {
         sh 'docker run --rm -v $(pwd -P):/src cdrx/pyinstaller-linux:python2 "pyinstaller --onefile sources/add2vals.py" '
       }
