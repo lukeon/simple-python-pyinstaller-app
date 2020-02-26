@@ -31,10 +31,12 @@ pipeline {
       agent {
         docker {
           image 'cdrx/pyinstaller-linux:python2'
-          args '-v $(pwd -p):/src --rm '
+          args '-v $(pwd -P):/src --rm '
         }
       }
       steps {
+        sh 'echo pwd()'
+        sh 'ls -l'
         sh '"pyinstaller --onefile sources/add2vals.py" '
       }
       post {
